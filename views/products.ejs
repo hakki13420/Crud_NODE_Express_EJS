@@ -1,0 +1,30 @@
+<%- include('partials/head') %>
+<div class="container my-5">
+  <form action="/add-product" method="POST">
+    <label for="nameItem">name</label>
+    <input
+      type="text"
+      name="nameItem"
+      id="nameItem"
+      class="form-control mb-2"
+      value="<%= nameEdit %>"
+    />
+    <button class="btn btn-success" type="submit">Add Product</button>
+  </form>
+  <hr />
+  <% items.forEach(function(item){ %>
+  <div class="alert alert-danger mb-1 d-flex justify-content-between">
+    <%- item.name %>
+    <div class="option">
+      <a href="/editProduct?id=<%- item.id %>" class="btn btn-success">edit</a>
+      <a href="/removeProduct?id=<%- item.id %>" class="btn btn-warning">X</a>
+    </div>
+  </div>
+  <% }); %>
+</div>
+
+<script>
+  document.getElementById("nameItem").focus();
+</script>
+
+<%- include('partials/footer') %>
